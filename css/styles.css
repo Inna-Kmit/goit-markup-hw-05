@@ -10,6 +10,8 @@
   --black-color: #000000;
   --second-background-color: #f5f4fa;
   --icons-color: #afb1b8;
+  --hover-duration: 250ms;
+  --hover-time-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -117,6 +119,7 @@ img {
   padding-top: 32px;
   padding-bottom: 32px;
   display: block;
+  transition: color var(--hover-duration) var(--hover-time-function);
 }
 .header-list {
   margin-left: auto;
@@ -126,6 +129,20 @@ img {
 .header-link:hover,
 .header-link:focus {
   color: var(--accent-color);
+}
+.current {
+  position: relative;
+}
+.current::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+  left: 0;
+  bottom: -1px;
 }
 /*------ header Logo---------*/
 
@@ -161,6 +178,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--second-text-color);
+  transition: color var(--hover-duration) var(--hover-time-function);
 }
 
 .header-contacts:hover,
@@ -226,13 +244,16 @@ img {
   border-radius: 4px;
   background-color: var(--accent-color);
   color: var(--background-color);
-  /*box-shadow: rgba(0, 0, 0, 0.15);*/
+  box-shadow: rgba(0, 0, 0, 0.15);
   display: block;
   margin: 0 auto;
   cursor: pointer;
   padding: 10px 32px;
   min-width: 200px;
   height: 50px;
+  transition: color var(--hover-duration) var(--hover-time-function),
+    backraund-color var(--hover-duration) var(--hover-time-function) box-shadow
+      var(--hover-duration) var(--hover-time-function);
 }
 .hero-button:hover,
 .hero-button:focus {
@@ -310,6 +331,26 @@ img {
 .works-item:not(:last-child) {
   margin-right: 30px;
 }
+.works-item {
+  position: relative;
+}
+.works-top-text {
+  position: absolute;
+  width: 100%;
+  height: 70px;
+  bottom: 0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--background-color);
+  background-color: rgba(47, 48, 58, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /*----------------Our Team-----------------*/
 .team-section {
   background: var(--second-background-color);
@@ -374,6 +415,8 @@ img {
   justify-content: center;
   align-items: center;
   fill: var(--icons-color);
+  transition: fill var(--hover-duration) var(--hover-time-function),
+    background-color var(--hover-duration) var(--hover-time-function);
 }
 .social-icons {
   width: 20px;
@@ -414,7 +457,9 @@ img {
   border: 1px solid #afb1b8;
   border-radius: 4px;
   fill: var(--icons-color);
-  outline: ;
+  outline: 1px solid #afb1b8;
+  transition: border var(--hover-duration) var(--hover-time-function),
+    fill var(--hover-duration) var(--hover-time-function);
 }
 
 .clients-link:hover,
@@ -441,6 +486,32 @@ img {
 .portfolio-list-item {
   flex-basis: calc(100%-60px) / 4;
 }
+
+.portfolio-list-item:hover .portfolio-text,
+.portfolio-list-item:focus .portfolio-text {
+  transform: translateY(0%);
+}
+
+.portfolio-text {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--background-color);
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: var(--hover-duration) var(--hover-time-function);
+}
+.portfolio-list-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
 .portfolio-content {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -464,6 +535,10 @@ img {
   background-color: var(--background-buttom-color);
   padding: 6px 22px;
   display: flex;
+  transition: color var(--hover-duration) var(--hover-time-function),
+    backgraund-color var(--hover-duration) var(--hover-time-function),
+    border var(--hover-duration) var(--hover-time-function),
+    box-shadow var(--hover-duration) var(--hover-time-function);
 }
 
 .filter-buttom:hover,
@@ -494,6 +569,7 @@ img {
   display: block;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition: box-shadow var(--hover-duration) var(--hover-time-function);
 }
 /*----------------------footer-------------------*/
 .footer {
@@ -525,6 +601,7 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--lighter-color);
+  transition: color var(--hover-duration) var(--hover-time-function);
 }
 .footer-link:hover,
 .footer-link:focus {
@@ -536,6 +613,7 @@ img {
   line-height: 1.71;
   letter-spacing: 0.03em;
   color: var(--background-color);
+  transition: color var(--hover-duration) var(--hover-time-function);
 }
 
 .footer-adress:hover,
@@ -579,8 +657,11 @@ img {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   fill: #ffffff;
+  transition: background-color var(--hover-duration) var(--hover-time-function);
 }
 .acept-link:hover,
 .acept-link:focus {
   background-color: var(--accent-color);
 }
+
+/*--------------modal window------------*/
